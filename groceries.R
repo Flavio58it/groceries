@@ -10,7 +10,7 @@ library(colorspace)
 install.packages("tkplot")
 library(Rgraphviz)
 
-#Loading data and treating data
+#Loading data and cleaning/pre-processing data
 
 #orders <- data.frame(orderID=order_prod$order_id, prod_name=order_prod$product_name)
 #write.csv(orders, "./orders.csv")
@@ -29,14 +29,14 @@ itemFrequency(baskets)
 test1<-eclat(baskets, parameter = list(supp=0.00, maxlen=3))
 inspect(test1)
 
-#Produtos mais comprados
+#Most purchased products
 itemFrequencyPlot(baskets, 
                   top="10", 
                   type="absolute", 
                   main="Best Sellers Brio", 
                   col="#0296A5")
 
-
+#A set of rules, with different parameters, that return a set of "itemsets" depending on how strictly these rules are. 
   #1 itemset
 #Rule0:supp:0.00199, conf:0.47, maxlen=3
 rule0 <- apriori(baskets, parameter=list(supp=0.00199, conf=0.47, maxlen=3))
@@ -57,7 +57,7 @@ inspect(rule2)
 rule3 <- apriori(baskets,parameter = list(supp = 0.002, conf = 0.40))
 rule3
 
-#14 itemsets
+  #14 itemsets
 #Rule3: supp = 0.002, conf = 0.40
 rule4 <- apriori(baskets,parameter = list(supp = 0.0009, conf = 0.30, maxlen=2))
 rule4
